@@ -1,0 +1,126 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Signup - MEDITECH</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/css/pages/signin.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+
+        <div class="navbar-inner">
+
+            <div class="container">
+
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                    @Html.ActionLink("MEDITECH", "Index", "Home", null, new { @class = "brand" })
+
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="">
+                            @Html.ActionLink("Already have an account? Login now?", "Login", "Account")
+                        </li>
+                    </ul>
+
+                </div><!--/.nav-collapse -->
+
+            </div> <!-- /container -->
+
+        </div> <!-- /navbar-inner -->
+
+    </div> <!-- /navbar -->
+
+
+
+    <div class="account-container register">
+
+        <div class="content clearfix">
+
+                <h1>Signup</h1>
+                @using (Html.BeginForm("Signup", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+                    @Html.ValidationSummary(true)
+                <div class="login-fields">
+
+                    <p>Create your free account:</p>
+                    
+                    <div class="field">
+                        <label for="firstname">First Name:</label>
+                        
+                        @Html.TextBox("Firstname",null, new {@id="firstname", @placeholder="First Name", @class="login" })
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="lastname">Last Name:</label>
+                        
+                        @Html.TextBox("Lastname",null, new {@id="lastname" , @placeholder="Last Name" ,@class="login" })
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="email">Username:</label>
+
+                        @Html.TextBox("Username",null, new { @id = "Username", @placeholder = "Username", @class = "login" })
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="email">Email Address:</label>
+                        
+                        @Html.TextBox("Email",null, new {@id="email",@placeholder="Email",@class="login" })
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="password">Password:</label>
+                        
+                        @Html.Password("Password",null, new {@id="password" ,@placeholder="Password" ,@class="login" })
+                    </div> <!-- /field -->
+
+                </div> <!-- /login-fields -->
+
+                <div class="login-actions">
+
+                    <button class="button btn btn-primary btn-large">Register</button>
+                
+                </div> <!-- .actions -->
+                }
+
+        </div> <!-- /content -->
+
+    </div> <!-- /account-container -->
+    <!-- Text Under Box -->
+    <div class="login-extra">
+        Already have an account? @Html.ActionLink(" to your account","Login","Account")
+    </div> <!-- /login-extra -->
+
+
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/signin.js"></script>
+
+</body>
+
+</html>

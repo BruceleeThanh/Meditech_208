@@ -1,0 +1,46 @@
+﻿@using Meditech.Models
+@model Meditech.Models.USERS
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    USERS tk = (USERS)ViewData["infAccout"];
+}
+<link href="~/css/pages/signin.css" rel="stylesheet" type="text/css">
+<div class="account-container register" style="margin-bottom:50px" >
+
+    <div class="content clearfix">
+
+        <h1>EDIT PROFILE</h1>
+        @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()          // this is for prevent CSRF attack
+            @Html.ValidationSummary(true)
+            <div class="login-fields">
+
+                <p>Edit your basic account information</p>
+
+                <div class="field">
+                    <label for="fullname">First Name:</label>
+
+                    @Html.TextBox("Fullname", tk.PHONENUMBER, new { @id = "firstname", @placeholder = "First Name", @class = "login" })
+                </div> <!-- /field -->
+
+                <div class="field">
+                    <label for="email">Email Address:</label>
+
+                    @Html.TextBox("Email", tk.EMAIL, new { @id = "email", @placeholder = "Email", @class = "login" })
+                </div> <!-- /field -->
+
+            </div> <!-- /login-fields -->
+
+            <div class="login-actions">
+
+                <button class="button btn btn-primary btn-large">Save</button>
+
+            </div> <!-- .actions -->
+        }
+
+    </div> <!-- /content -->
+
+</div> <!-- /account-container -->
+

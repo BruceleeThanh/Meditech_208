@@ -1,0 +1,39 @@
+﻿@using Meditech.Models
+@model Meditech.Models.USERS
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    USERS tk= (USERS)ViewData["userdetail"];
+}
+<link href="~/css/pages/signin.css" rel="stylesheet" type="text/css">
+
+    <div class="account-container" style="margin-bottom:50px">
+        <div class="content clearfix" style="font-size:14px;padding:16px 28px 32px; display:block">
+            <div class="content clearfix">
+                <div class="login-fields">
+                    <div class="field">
+                        <center><h2 style="font:16;margin-bottom:10px">PROFILE</h2><hr/></center>
+                        <strong for="Fullname">Full Name:</strong>
+                        @Html.DisplayFor(a => tk.USERNAME)
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <strong for="email">Username:</strong>
+                        @Html.DisplayFor(a => tk.USERNAME)
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <strong for="email">Email Address:</strong>
+                        @Html.DisplayFor(a => tk.EMAIL)
+                    </div> <!-- /field -->
+                    <div class="login-actions">
+                        
+                        <button class="button btn btn-primary btn-large" >@Html.ActionLink("Edit", "Edit", "Account")</button>
+                    </div> <!-- .actions -->
+                    @Html.ActionLink("Change your password", "ChangePassword", "Account")
+                </div> <!-- /login-fields -->
+
+            </div> <!-- /content -->
+        </div>
+    </div>
